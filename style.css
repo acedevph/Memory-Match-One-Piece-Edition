@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pirata One', cursive;
+
+  background-image: url("onepiece-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  position: relative;
+}
+
+/* READABILITY OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 180px;
+  background: rgba(255, 236, 179, 0.95);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border-right: 4px solid #c0392b;
+}
+
+.sidebar h2 {
+  color: #c0392b;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  font-family: inherit;
+  border: none;
+  background: #f1c40f;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.sidebar button:hover {
+  background: #e67e22;
+  color: white;
+}
+
+.stats {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  color: #c0392b;
+  text-shadow: 2px 2px #f1c40f;
+  margin-bottom: 20px;
+}
+
+.game-board {
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* CARDS */
+.card {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  border: 2px solid #c0392b;
+  overflow: hidden;
+}
+
+.card-front {
+  background: url("back.jpg") center/cover no-repeat;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #fff;
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  border-radius: 8px;
+}
